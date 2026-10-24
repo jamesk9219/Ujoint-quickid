@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>U-Joint Quick ID</title>
+<style>
+body{font-family:Arial,sans-serif;background:#101820;color:white;margin:0;padding:20px}
+main{max-width:480px;margin:auto}
+h1{color:#69d2ff;font-size:25px}
+label{display:block;margin-top:18px;font-weight:bold}
+input,select,button{box-sizing:border-box;width:100%;padding:14px;margin-top:7px;font-size:18px;border-radius:8px}
+button{background:#19a974;color:white;border:0;font-weight:bold;margin-top:24px}
+#result{margin-top:24px;padding:16px;background:#253342;border-radius:8px;white-space:pre-line}
+small{color:#c5d0da}
+</style>
+</head>
+<body>
+<main>
+<h1>U-Joint Quick ID</h1>
+<p>Precision • Spicer • MasterPro</p>
+<label for="cap">Cap Diameter (inches)</label>
+<input id="cap" type="number" step="0.001" placeholder="Example: 1.063">
+<label for="spread">Measured Spread (inches)</label>
+<input id="spread" type="number" step="0.001" placeholder="Example: 3.625">
+<label for="retainer">Retainer Type</label>
+<select id="retainer">
+<option value="outside">Outside Snap Rings</option>
+<option value="inside">Inside Snap Rings</option>
+<option value="other">Other / Unknown</option>
+</select>
+<button onclick="findJoint()">Find Verified Match</button>
+<div id="result" role="status">Enter measurements to begin.</div>
+<p><small>Measurement tolerance: ±0.005 inch. Verify fitment before sale.</small></p>
+</main>
+<script>
+const joints = [];
+function findJoint(){
+ const cap=Number(document.getElementById("cap").value);
+ const spread=Number(document.getElementById("spread").value);
+ const type=document.getElementById("retainer").value;
+ const result=document.getElementById("result");
+ if(!cap||!spread||cap<=0||spread<=0){
+  result.textContent="Enter both measurements.";
+  return;
+ }
+ const matches=joints.filter(j=>
+  j.type===type &&
+  Math.abs(j.cap-cap)<=0.005 &&
+  Math.abs(j.spread-spread)<=0.005
+ );
+ if(matches.length===0){
+  result.textContent="NO VERIFIED MATCH\nNo part number has been confirmed for these measurements.";
+ }else{
+  result.textContent=matches.map(j=>
+   "Verified match: "+j.brand+" "+j.part
+  ).join("\n");
+ }
+}
+</script>
+</body>
+</html>
