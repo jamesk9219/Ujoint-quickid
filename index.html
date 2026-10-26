@@ -37,6 +37,18 @@ small{color:#c5d0da}
 <script>
 const joints = [
   // Verified U-joint records will go here.
+  
+{
+  series: "1310",
+  brand: "Spicer",
+  part: "5-153X",
+  cap: 1.062,
+  spread: 3.219,
+  type: "outside",
+  lubrication: "greasable",
+  verified: false
+}
+  
 ];
 function findJoint(){
  const cap=Number(document.getElementById("cap").value);
@@ -52,7 +64,8 @@ function findJoint(){
   return;
 }
  const matches=joints.filter(j=>
-  j.type===type &&
+  j.verified===true &&
+   j.type===type &&
   Math.abs(j.cap-cap)<=0.005 &&
   Math.abs(j.spread-spread)<=0.005
  );
