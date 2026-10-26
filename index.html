@@ -45,6 +45,10 @@ function findJoint(){
   result.textContent="Enter both measurements.";
   return;
  }
+ if(cap < 0.5 || cap > 2.5){
+  result.textContent="CHECK CAP DIAMETER: Please verify your measurement.";
+  return;
+}
  const matches=joints.filter(j=>
   j.type===type &&
   Math.abs(j.cap-cap)<=0.005 &&
