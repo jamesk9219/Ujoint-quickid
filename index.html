@@ -105,33 +105,36 @@ const joints = [
 }
  
 ];
-function findJoint(){
- const cap=Number(document.getElementById("cap").value);
- const spread=Number(document.getElementById("spread").value);
- const type=document.getElementById("retainer").value;
- const result=document.getElementById("result");
- if(!cap||!spread||cap<=0||spread<=0){
-  result.textContent="Enter both measurements.";
-  return;
- }
- if(cap < 0.5 || cap > 2.5){
-  result.textContent="CHECK CAP DIAMETER: Please verify your measurement.";
-  return;
+
+function findJoint() {
+  const cap = Number(document.getElementById("cap").value);
+  const spread = Number(document.getElementById("spread").value);
+  const type = document.getElementById("retainer").value;
+  const result = document.getElementById("result");
+
+  if (!Number.isFinite(cap) || !Number.isFinite(spread) ||
+      cap <= 0 || spread <= 0) {
+    result.textContent = "Enter both measurements.";
+    return;
+  }
+
+  if (cap < 0.5 || cap > 2.5) {
+    result.textContent = "CHECK CAP DIAMETER";
+    return;
+  }
+
+  const matches = identifyUJoint(cap, spread, type);
+
+  if (matches.length === 0) {
+    result.textContent =
+      "NO VERIFIED MATCH\nNo part number has been confirmed for these measurements.";
+  } else {
+    result.textContent = matches.map(j =>
+      "Verified match: " + j.brand + " " + j.part
+    ).join("\n");
+  }
 }
- const matches=joints.filter(j=>
-  j.verified===true &&
-   j.type===type &&
-  Math.abs(j.cap-cap)<=0.005 &&
-  Math.abs(j.spread-spread)<=0.005
- );
- if(matches.length===0){
-  result.textContent="NO VERIFIED MATCH\nNo part number has been confirmed for these measurements.";
- }else{
-  result.textContent=matches.map(j=>
-   "Verified match: "+j.brand+" "+j.part
-  ).join("\n");
- }
-}
+
 </script>
 </body>
 </html>
