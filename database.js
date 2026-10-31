@@ -56,8 +56,27 @@ const UJOINT_DATABASE = [
     snapRingType: "outside",
     lubrication: "greasable",
     verified: true
+  },
+  {
+    series: "1310",
+    brand: "Neapco",
+    part: "1-0153",
+    capDiameter: 1.063,
+    width: 3.219,
+    snapRingType: "outside",
+    lubrication: "greasable",
+    verified: true
+  },
+  {
+    series: "1310",
+    brand: "Neapco",
+    part: "1-0153G",
+    capDiameter: 1.063,
+    width: 3.219,
+    snapRingType: "outside",
+    lubrication: "non-greasable",
+    verified: true
   }
-
 
   
 
