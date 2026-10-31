@@ -3,8 +3,7 @@
  U-Joint Quick ID
  Verified Parts Database
  Offline Android 
-
-
+*/
 
 const UJOINT_DATABASE = [
   {
