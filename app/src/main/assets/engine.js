@@ -22,7 +22,10 @@ function identifyUJoint(capDiameter, width, snapRingType) {
   }
 
   return UJOINT_DATABASE.filter(joint => {
-    if (joint.verified !== true) return false;
+    if (joint.verified !== true ||
+        joint.evidenceStatus !== "manufacturer_dimensions_confirmed" ||
+        joint.widthDefinition !== "outside_cap_to_cap" ||
+        typeof joint.source !== "string" || !joint.source.startsWith("https://")) return false;
 
     const capMatch =
       Math.abs(joint.capDiameter - capDiameter)

@@ -22,7 +22,7 @@ small{color:#c5d0da}
 <body>
 <main>
 <h1>U-Joint Quick ID</h1>
-<p>Verified U-joint dimensional lookup</p>
+<p>Verified U-joint dimensional lookup<br><small>Limited catalog: 1 enabled record. Outside-ring width: cap face to cap face.</small></p>
 <label for="cap">Cap Diameter (inches)</label>
 <input id="cap" type="number" step="0.001" placeholder="Example: 1.063">
 <label for="spread">Measured Spread (inches)</label>
@@ -67,7 +67,7 @@ function findJoint() {
       "NO VERIFIED MATCH\nNo part number has been confirmed for these measurements.";
   } else {
     result.textContent = matches.map(j =>
-      "Verified match: " + j.brand + " " + j.part
+      "Verified dimensional match: " + j.brand + " " + j.part + " (" + j.lubrication + ")"
     ).join("\n");
   }
 }
