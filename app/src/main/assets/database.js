@@ -1,8 +1,7 @@
-
 /*
- U-Joint Quick ID
- Verified Parts Database
- Offline Android 
+ U-Joint Quick ID — dimensions in inches.
+ Only verified === true records qualify for matching.
+ Dimensional verification does not approve applications or interchanges.
 */
 
 const UJOINT_DATABASE = [
@@ -30,7 +29,9 @@ const UJOINT_DATABASE = [
     width: 3.219,
     snapRingType: "outside",
     lubrication: "greasable",
-    verified: false
+    verified: false,
+    evidenceStatus: "hold_width_and_retention_unconfirmed",
+    evidenceNote: "Recovered research does not substantiate the existing width or outside-retainer classification. Existing values remain unverified research only."
   },
   {
     series: "1330",
@@ -51,8 +52,14 @@ const UJOINT_DATABASE = [
     width: 3.625,
     snapRingType: "outside",
     lubrication: "greasable",
-    verified: false,
-    evidenceStatus: "catalog_only_pending_dimensions"
+    verified: true,
+    source: "https://www.danaaftermarket.com/Automotive/Automotive-Driveshaft/5-178X",
+    evidenceStatus: "manufacturer_dimensions_confirmed",
+    checkedOn: "2026-11-08",
+    reviewScope: "Manufacturer dimensional data only; not application or interchange approval",
+    widthDefinition: "outside_cap_to_cap",
+    evidenceNote: "Dana lists both cap diameters as 1.188 inches, both OSR cap-to-cap widths as 3.625 inches, external snap rings and greaseable construction.",
+    interchangeApproved: false
   },
   {
     series: "1410",
@@ -62,8 +69,14 @@ const UJOINT_DATABASE = [
     width: 4.188,
     snapRingType: "outside",
     lubrication: "greasable",
-    verified: false,
-    evidenceStatus: "catalog_only_pending_dimensions"
+    verified: true,
+    source: "https://www.danaaftermarket.com/Automotive/Automotive-Driveshaft/5-160X",
+    evidenceStatus: "manufacturer_dimensions_confirmed",
+    checkedOn: "2026-11-08",
+    reviewScope: "Manufacturer dimensional data only; not application or interchange approval",
+    widthDefinition: "outside_cap_to_cap",
+    evidenceNote: "Dana lists both cap diameters as 1.188 inches, both OSR cap-to-cap widths as 4.188 inches, external snap rings and greaseable construction.",
+    interchangeApproved: false
   },
   {
     series: "1310",
@@ -74,7 +87,8 @@ const UJOINT_DATABASE = [
     snapRingType: "outside",
     lubrication: "greasable",
     verified: false,
-    evidenceStatus: "catalog_only_pending_dimensions"
+    evidenceStatus: "hold_cap_diameter_discrepancy",
+    evidenceNote: "Existing file lists 1.063-inch caps; recovered research lists 1.062-inch caps. Discrepancy unresolved. Excluded from verified matching."
   },
   {
     series: "1310",
@@ -85,14 +99,7 @@ const UJOINT_DATABASE = [
     snapRingType: "outside",
     lubrication: "non-greasable",
     verified: false,
-    evidenceStatus: "catalog_only_pending_dimensions"
+    evidenceStatus: "hold_cap_diameter_discrepancy",
+    evidenceNote: "Existing file lists 1.063-inch caps; recovered research lists 1.062-inch caps. Discrepancy unresolved. Excluded from verified matching."
   }
-
-  
-
-
 ];
-
-
-// Only verified parts will be added.
-// All measurements are in inches.
